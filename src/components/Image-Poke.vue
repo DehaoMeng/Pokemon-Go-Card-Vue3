@@ -69,7 +69,7 @@ function openImg() {
     </div>
     <!-- 放大之后的图片 -->
     <div ref="targit" id="pop-box" @click="openImg">
-      <div ref="card1" class="card" @mousemove="transtlate($event, card1)">
+      <div ref="card1" class="card card-tran" @mousemove="transtlate($event, card1)">
         <div id="flash"></div>
         <img ref="pop_img" id="pop-img" src="">
       </div>
@@ -106,12 +106,11 @@ function openImg() {
 }
 
 .card-tran {
-  overflow: hidden;
   transform: perspective(500px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-
   transition: 0.3s;
 }
 .card{
+  overflow: hidden;
   width: 20vw;
   height: 50vh;
   border-radius: 10px;
