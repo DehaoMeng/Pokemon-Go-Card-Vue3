@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import {ref, toRefs} from "vue";
 
-const props = defineProps(['path', 'width', 'height', 'pop'])
+const props = defineProps({
+  path: String,
+  width: String,
+  height: String,
+  pop: String,
+  turnover: Boolean
+})
 const {path, width, height, pop} = toRefs(props)
 const img = ref<HTMLImageElement>()
 const pop_img = ref<HTMLImageElement>()
@@ -52,7 +58,10 @@ function openImg() {
   <div class="main">
     <!-- 需要点击放大的图片 -->
     <div class="pop-box">
-      <div ref="card0" @mousemove="transtlate($event, card0)" @mouseleave="recover(card0)" class="card"
+      <div ref="card0"
+           @mousemove="transtlate($event, card0)"
+           @mouseleave="recover(card0)"
+           :class="[turnover?'card-tran':'', 'card']"
            :style="{width:width,height:height} ">
         <div id="flash"></div>
         <img ref="img" :src="props.path" @click="openImg"/>
@@ -96,15 +105,17 @@ function openImg() {
   background-color: white;
 }
 
-.card {
+.card-tran {
   overflow: hidden;
   transform: perspective(500px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+
+  transition: 0.3s;
+}
+.card{
   width: 20vw;
   height: 50vh;
   border-radius: 10px;
-  transition: 0.3s;
 }
-
 .card img {
   height: 100%;
   width: 100%;
@@ -137,7 +148,8 @@ function openImg() {
   }
 
 }
-.main{
+
+.main {
   display: inline-block;
 }
 </style>

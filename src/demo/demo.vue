@@ -10,15 +10,15 @@ const pop = ref('true')
 <template>
   <div>
     <div>
-      <ImagePoke :path="path"/>
+      <ImagePoke :path="path" />
       单一实例
     </div>
     <div>
-    <ImagePoke :path="path" :width="width" :height="height"/>
+    <ImagePoke :path="path" :width="width" :height="height" turnover/>
       自定义宽高
     </div>
     <div>
-      <ImagePoke :path="path" :width="width" :height="height" :pop="pop"/>
+      <ImagePoke :path="path" :width="width" :height="height" :pop="pop" turnover/>
       可点击放大
     </div>
   </div>
