@@ -5,7 +5,7 @@ const props = defineProps({
   path: String,
   width: String,
   height: String,
-  pop: String,
+  pop: Boolean,
   turnover: Boolean
 })
 const {path, width, height, pop} = toRefs(props)
@@ -37,7 +37,7 @@ function recover(item: any) {
 
 function openImg() {
   if (pop) {
-    if (pop.value != 'true') return
+    if (!pop.value) return
     if (pop_img.value && img.value) {
       pop_img.value.src = img.value.src;
       if (targit.value) {
@@ -110,6 +110,7 @@ function openImg() {
   transition: 0.3s;
 }
 .card{
+  position: relative
   overflow: hidden;
   width: 20vw;
   height: 50vh;
