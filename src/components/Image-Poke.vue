@@ -110,7 +110,7 @@ function openImg() {
   transition: 0.3s;
 }
 .card{
-  position: relative
+  position: relative;
   overflow: hidden;
   width: 20vw;
   height: 50vh;
